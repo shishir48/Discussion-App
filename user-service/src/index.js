@@ -3,11 +3,13 @@ const app = express()
 const dotenv = require("dotenv")
 dotenv.config()
 require("./config/db")()
-const authRoutes = require("./routes/routes")
+const authRoutes = require("./routes/authRoutes")
+const userRoutes = require("./routes/userRoutes")
 const port = process.env.PORT || 3001
 
 app.use(express.json())
 app.use("/api/auth", authRoutes)
+app.use("/api/users", userRoutes)
 
 app.listen(port, () => {
   console.log(`user service is running on port ${port}`)
